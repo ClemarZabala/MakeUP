@@ -1,320 +1,482 @@
 /* ------------------------------------------Estilos Generales----------------------------------------------------------*/
 body {
-    background-color: #F6F5F2;
-    font-family: 'Roboto', sans-serif;
-  }
-  
-  /* Principal */
-  .principal {
-    text-align: center;
-    justify-content: center;
-    padding: 0px;
-    margin: 0px;
-    background-image: url(./asets/img/fondologo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  .titulo {
-    padding: 0px;
-    margin: 0px;
-  }
-  
-  p a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-    justify-content: center;
-    align-self: center;
-  }
-  
+  background-color: #F6F5F2;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Principal */
+.principal {
+  text-align: center;
+  justify-content: center;
+  padding: 0px;
+  margin: 0px;
+  background-image: url(./asets/img/fondologo.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.titulo {
+  padding: 0px;
+  margin: 0px;
+}
+
+p a {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  align-self: center;
+}
+
 /* Contenedor del logo y texto alineado */
 .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Espacio entre el logo y el texto */
-  }
-  
-  /* Estilo del logo */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espacio entre el logo y el texto */
+}
+
+/* Estilo del logo */
+.logo {
+  height: 60px; /* Tamaño del logo ligeramente reducido */
+  width: auto;
+}
+
+/* Estilo del texto al lado del logo */
+.logo-text {
+  font-size: 22px; /* Ajuste de tamaño para jerarquía visual */
+  font-weight: 700; /* Peso de fuente fuerte para mayor visibilidad */
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1.2px; /* Espaciado entre letras para una mejor legibilidad */
+  line-height: 1.2; /* Alineación vertical mejorada */
+}
+
+/* Ajustes Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
   .logo {
-    height: 60px; /* Tamaño del logo ligeramente reducido */
-    width: auto;
+    height: 50px; /* Reducir el tamaño del logo en pantallas pequeñas */
   }
-  
-  /* Estilo del texto al lado del logo */
+
   .logo-text {
-    font-size: 22px; /* Ajuste de tamaño para jerarquía visual */
-    font-weight: 700; /* Peso de fuente fuerte para mayor visibilidad */
-    color: #333;
-    text-transform: uppercase;
-    letter-spacing: 1.2px; /* Espaciado entre letras para una mejor legibilidad */
-    line-height: 1.2; /* Alineación vertical mejorada */
+    font-size: 18px; /* Ajustar tamaño del texto en pantallas pequeñas */
   }
-  
-  /* Ajustes Responsive para pantallas pequeñas */
-  @media (max-width: 768px) {
-    .logo {
-      height: 50px; /* Reducir el tamaño del logo en pantallas pequeñas */
-    }
-  
-    .logo-text {
-      font-size: 18px; /* Ajustar tamaño del texto en pantallas pequeñas */
-    }
-  }
-  
-  
-  /* ------------------------------------------Menú de Navegación----------------------------------------------------------*/
+}
+
+
+/* ------------------------------------------Menú de Navegación----------------------------------------------------------*/
 /* Barra de navegación */
 .navbar {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Distribuye el logo, los botones y el carrito */
-    padding: 10px 20px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribuye el logo, los botones y el carrito */
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Cambiar el color de fondo al hacer scroll (efecto "sticky") */
+.navbar.scrolled {
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor del logo y texto */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del logo más grande */
+.logo {
+  height: 80px; /* Tamaño más grande del logo */
+  width: auto;
+  margin-right: 15px; /* Espacio entre el logo y el texto */
+}
+
+/* Estilo del texto al lado del logo */
+.logo-text {
+  font-size: 24px; /* Tamaño de texto más grande */
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase; /* Mayúsculas para dar un look más profesional */
+  letter-spacing: 1.5px;
+}
+
+/* Contenedor de botones del menú */
+.navbar-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Espaciado entre botones */
+}
+
+/* Estilo de los botones */
+.navbar-buttons button {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #333;
+  background-color:#F3D0D7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover en los botones */
+.navbar-buttons button:hover {
+  background-color: #e63946;
+  transform: translateY(-3px); /* Pequeño efecto de desplazamiento */
+}
+
+/* Botón de carrito de compras */
+.compras {
+  display: flex;
+  align-items: center;
+}
+
+.compras button {
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #F3D0D7;
+  color: #333;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.compras button:hover {
+  background-color: #e63946;
+}
+
+/* Mejoras en dispositivos móviles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
   }
-  
-  /* Cambiar el color de fondo al hacer scroll (efecto "sticky") */
-  .navbar.scrolled {
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Contenedor del logo y texto */
-  .logo-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Estilo del logo más grande */
-  .logo {
-    height: 80px; /* Tamaño más grande del logo */
-    width: auto;
-    margin-right: 15px; /* Espacio entre el logo y el texto */
-  }
-  
-  /* Estilo del texto al lado del logo */
-  .logo-text {
-    font-size: 24px; /* Tamaño de texto más grande */
-    font-weight: 700;
-    color: #333;
-    text-transform: uppercase; /* Mayúsculas para dar un look más profesional */
-    letter-spacing: 1.5px;
-  }
-  
-  /* Contenedor de botones del menú */
+
   .navbar-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Espaciado entre botones */
+    flex-direction: column;
+    gap: 10px;
   }
-  
-  /* Estilo de los botones */
-  .navbar-buttons button {
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #333;
-    background-color:#F3D0D7;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  /* Efecto hover en los botones */
-  .navbar-buttons button:hover {
-    background-color: #e63946;
-    transform: translateY(-3px); /* Pequeño efecto de desplazamiento */
-  }
-  
-  /* Botón de carrito de compras */
+
   .compras {
-    display: flex;
-    align-items: center;
+    margin-top: 10px;
   }
-  
-  .compras button {
-    font-size: 16px;
-    font-weight: 600;
-    background-color: #F3D0D7;
-    color: #333;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .compras button:hover {
-    background-color: #e63946;
-  }
-  
-  /* Mejoras en dispositivos móviles */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-    }
-  
-    .navbar-buttons {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    .compras {
-      margin-top: 10px;
-    }
-  }
-  
-  
-  /* ---------------------------------------------------Carrusel---------------------------------------------------- */
+}
+
+
+/* ---------------------------------------------------Carrusel---------------------------------------------------- */
 
 /* Estilos generales del carrusel */
 .carousel-item {
-    height: 500px; /* Limitar la altura máxima */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  /* Ajuste de las imágenes dentro del carrusel */
-  .carousel-item img {
-    width: auto;
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain; /* Mantiene la relación de aspecto y evita distorsiones */
-    margin: 0 auto;
-    display: block;
-  }
-  
-  /* Controles del carrusel (anterior y siguiente) */
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.3); /* Hacer los controles más visibles */
-    border-radius: 50%;
-    padding: 10px;
-  }
-  
-  /* Indicadores del carrusel */
-  .carousel-indicators [data-bs-target] {
-    background-color: #333; /* Hacer los indicadores más visibles */
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-  }
-  
-  
-  
-  
-  /* ---------------------------------------------------Productos---------------------------------------------------- */
+  height: 500px; /* Limitar la altura máxima */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Ajuste de las imágenes dentro del carrusel */
+.carousel-item img {
+  width: auto;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; /* Mantiene la relación de aspecto y evita distorsiones */
+  margin: 0 auto;
+  display: block;
+}
+
+/* Controles del carrusel (anterior y siguiente) */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.3); /* Hacer los controles más visibles */
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/* Indicadores del carrusel */
+.carousel-indicators [data-bs-target] {
+  background-color: #333; /* Hacer los indicadores más visibles */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+
+
+
+/* ------------------------------------------Productos---------------------------------------------------- */
+
+/* Contenedor del grid para los productos */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adaptación para diferentes tamaños de pantalla */
+  gap: 20px;  /* Espacio entre las tarjetas de productos */
+  margin: 5%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Estilos de las tarjetas de productos */
+.grid-item {
+  background-color: #fff;  /* Fondo blanco para el contenido general */
+  border-radius: 10px;  /* Bordes redondeados para las tarjetas */
+  overflow: hidden;  /* Evitar desbordamientos de imágenes o contenido */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra ligera */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;  /* Permitir que los elementos internos se apilen en columna */
+  justify-content: space-between;  /* Distribuir los elementos dentro de la tarjeta uniformemente */
+  height: 100%;  /* Asegurarnos de que todas las tarjetas tengan la misma altura */
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);  /* Efecto de elevación en hover */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);  /* Sombra más profunda en hover */
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;  /* Asegura que las imágenes se adapten al contenedor */
+  object-fit: cover;  /* Ajusta la imagen sin distorsión */
+  border-bottom: 2px solid #e63946;  /* Línea de separación entre la imagen y el contenido */
+}
+
+/* Estilo para los títulos de los productos con fondo rosa */
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  background-color: #F3D0D7;  /* Fondo rosa suave para los nombres de los productos */
+  padding: 10px;  /* Espaciado interno del título */
+  border-radius: 0 0 8px 8px;  /* Bordes redondeados en la parte inferior */
+  margin: 0;  /* Alineación perfecta con la tarjeta */
+  text-align: center;
+  display: block;
+  width: 100%;  /* Asegura que el fondo rosa ocupe todo el ancho */
+}
+
+.grid-item:hover .card-title {
+  background-color: #e63946;  /* Cambia a rojo al hacer hover */
+  color: white;  /* Texto en blanco en hover */
+}
+
+/* Estilo general del contenido debajo del título */
+.card-content {
+  padding: 20px;  /* Espacio interno dentro de cada tarjeta */
+  flex-grow: 1;  /* Asegura que este contenido ocupe el espacio restante dentro de la tarjeta */
+}
+
+.card-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Botón de añadir al carrito */
+.btn-primary {
+  background-color: #F3D0D7;  /* Fondo rosa suave, igual que el resto de botones */
+  border-color: #F3D0D7;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 100%;  /* Ancho completo del botón */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e63946;  /* Cambia a rojo al hacer hover */
+  border-color: #e63946;
+  color: white;
+  transform: translateY(-3px);  /* Efecto de elevación al hacer hover */
+}
+
+/* Espaciado en dispositivos móviles */
+@media (max-width: 768px) {
   .grid-container {
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 5%;
-    text-align: center;
-    justify-content: center;
+    margin: 2%;  /* Reducir márgenes en pantallas pequeñas */
   }
-  
-  .grid-item {
-    margin: 3%;
+
+  .card-content {
+    padding: 15px;  /* Reducir padding en pantallas pequeñas */
   }
-  
-  .grid-item img {
-    width: 100%;
-    height: 100%;
-    padding: 2px;
+
+  .card-title {
+    font-size: 1.2rem;  /* Tamaño de fuente más pequeño para títulos en pantallas pequeñas */
+    padding: 8px;  /* Ajustar el padding para pantallas más pequeñas */
   }
-  
-  .card {
-    background-color: #F3D0D7;
-    max-width: 100%;
-    max-height: 100%;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+
+  .card-text {
+    font-size: 1rem;  /* Tamaño de fuente más pequeño para descripciones */
   }
-  
-  .card:hover {
-    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .grid-item:hover img {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-  }
-  
-  /* ---------------------------------------------------Preguntas Frecuentes---------------------------------------------------- */
-  h2 {
-    text-align: center;
-    justify-content: center;
-    margin: 2%;
-  }
-  
-  .accordion-button {
-    background-color: #F3D0D7;
-    justify-content: center;
-    text-align: center;
-    border: 1px solid black;
-    transition: background-color 0.3s ease;
-  }
-  
-  .accordion-button:not(.collapsed) {
-    background-color: #e6b8c3;
-    color: #333;
-  }
-  
-  .accordion-body {
-    font-size: 16px;
-    color: #555;
-    background-color: #F6F5F2;
-    width: 95%;
-  }
-  
-  .collapse {
-    text-align: center;
-    justify-self: center;
-    margin: 0%;
-  }
-  
-  .accordion-item {
-    background-color: #F6F5F2;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  /* ---------------------------------------------------Footer---------------------------------------------------- */
-  footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border: 1px solid black;
-    justify-content: center;
-    text-align: center;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-  }
-  
-  footer a {
-    color: #e6b8c3;
-    text-decoration: none;
-  }
-  
-  footer a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Icono de WhatsApp */
-  .iconowpp {
-    width: 5%;
-    position: fixed;
-    top: 90%;
-    right: 1%;
-  }
-  
+}
+
+
+/* ---------------------------------------------------Preguntas Frecuentes---------------------------------------------------- */
+h2 {
+  text-align: center;
+  justify-content: center;
+  margin: 2%;
+}
+
+.accordion-button {
+  background-color: #F3D0D7;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid black;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e6b8c3;
+  color: #333;
+}
+
+.accordion-body {
+  font-size: 16px;
+  color: #555;
+  background-color: #F6F5F2;
+  width: 95%;
+}
+
+.collapse {
+  text-align: center;
+  justify-self: center;
+  margin: 0%;
+}
+
+.accordion-item {
+  background-color: #F6F5F2;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---------------------------------------------------Footer---------------------------------------------------- */
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid black;
+  justify-content: center;
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+footer a {
+  color: #e6b8c3;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Icono de WhatsApp */
+.iconowpp {
+  width: 5%;
+  position: fixed;
+  top: 90%;
+  right: 1%;
+}
+
+/* ------------------------------------------Carrito de Compras----------------------------------------------------------*/
+
+/* Estilo del título del carrito de compras */
+h1 {
+  font-size: 2.5rem;
+  color: #333;  /* Mismo color que los títulos */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Estilo de la tabla del carrito de compras */
+.table {
+  margin-top: 20px;
+  background-color: #F6F5F2;  /* Color de fondo suave igual al del body */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra ligera, como las tarjetas de productos */
+  width: 100%;  /* Asegurar que ocupe todo el ancho */
+}
+
+/* Estilo de las celdas de la tabla */
+.table th, .table td {
+  vertical-align: middle;
+  padding: 15px;
+  text-align: center;
+  color: #333;  /* Color de texto consistente con el resto */
+}
+
+/* Estilo del input para seleccionar cantidad */
+input[type="number"] {
+  width: 60px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Eliminar las flechas del input en algunos navegadores */
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]:focus {
+  border-color: #e6b8c3;  /* Color suave, igual al usado en otros elementos */
+  box-shadow: 0 0 5px rgba(230, 184, 195, 0.5);
+  outline: none;
+}
+
+/* Estilo del total del carrito */
+h4 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Botón de proceder al pago */
+.btn-primary {
+  background-color: #F3D0D7;  /* Fondo rosa suave, igual que el resto de botones */
+  border-color: #F3D0D7;
+  color: #333;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto hover para el botón */
+.btn-primary:hover {
+  background-color: #e63946;  /* Rojo al hacer hover, como en otros botones */
+  border-color: #e63946;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Estilos adicionales para la disposición */
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-5 {
+  margin-top: 3rem;
+}
