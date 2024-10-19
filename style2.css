@@ -507,13 +507,27 @@ footer {
 
 .footer-social a {
   display: inline-block;
-  width: auto; /* Elimina el fondo */
+  width: auto;
 }
 
 .iconowpp {
   width: 35px; /* Tamaño ajustado */
   height: auto;
-  margin: 0 auto; /* Centra el logo */
+  margin: 0 auto;
+}
+
+/* Estilo específico para el QR del WhatsApp */
+.footer-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px; /* Espaciado adicional para separación */
+}
+
+.footer-qr img {
+  width: 120px; /* Aumenta el tamaño del QR */
+  height: auto;
+  margin-top: 10px;
 }
 
 /* Copyright */
@@ -536,5 +550,9 @@ footer {
 
   .footer-links, .footer-contact {
     margin-bottom: 10px;
+  }
+  
+  .footer-qr img {
+    width: 100px; /* Reduce el tamaño del QR en pantallas pequeñas */
   }
 }
