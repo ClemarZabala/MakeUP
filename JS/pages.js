@@ -152,16 +152,15 @@ let productosData = [
     }
 ];
 
-// Guardar productos en LocalStorage para acceso desde otras páginas
+// guarda productos en LocalStorage para acceso desde domde queramos
 localStorage.setItem('productos', JSON.stringify(productosData));
 
-// Función para mostrar los productos de labiales en la página de labiales
+// funcion para mostrar los productos de labiales en la página de labiales
 function mostrarProductos(productos) {
     const productosList = document.getElementById('productos-list');
     productos.forEach(producto => {
         let productoDiv = document.createElement('div');
-        productoDiv.classList.add('col-md-4'); // Clase para diseño con Bootstrap
-
+        productoDiv.classList.add('col-md-4'); 
         productoDiv.innerHTML = `
             <div class="card">
                 <img src="../asets/img/Productos/${producto.ID}.jpeg" alt="Imagen de ${producto.nombre}" class="card-img-top">
@@ -178,25 +177,25 @@ function mostrarProductos(productos) {
     });
 }
 
-// Obtenemos los productos de LocalStorage y filtramos los labiales
+// obtenemos los productos de LocalStorage y filtramos los labiales
 const productos = JSON.parse(localStorage.getItem('productos'));
 const labiales = productos.find(categoria => categoria.Categoria === 'Labiales').Productos;
 
-// Llamar a la función para mostrar los productos de labiales
+// llamar a la función para mostrar los productos de labiales
 if (document.getElementById('productos-list')) {
     mostrarProductos(labiales);
 }
 
-// Función para agregar productos al carrito
+// fncion para agregar productos al carrito
 function agregarAlCarrito(productoId) {
     const producto = labiales.find(item => item.ID === productoId);
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-    // Obtener la cantidad seleccionada por el usuario
+    // obtenemos la cantidad seleccionada por el usuario
     const cantidadInput = document.getElementById(`cantidad-${productoId}`).value;
     const cantidad = parseInt(cantidadInput) || 1;
 
-    // Verificar si el producto ya está en el carrito
+    // verificar si el producto ya está en el carrito
     const productoEnCarrito = carrito.find(item => item.ID === productoId);
     if (productoEnCarrito) {
         productoEnCarrito.cantidad += cantidad;
@@ -206,7 +205,7 @@ function agregarAlCarrito(productoId) {
 
     localStorage.setItem('carrito', JSON.stringify(carrito)); // Guardar el carrito actualizado en LocalStorage
 
-    // Notificación con SweetAlert
+    // notificación con SweetAlert
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -217,14 +216,14 @@ function agregarAlCarrito(productoId) {
     });
 }
 
-// Función para cargar el carrito en la página de compras
+// funcion para cargar el carrito en la página de compras
 function cargarCarrito() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const carritoItems = document.getElementById('carrito-items');
     const carritoTotal = document.getElementById('carrito-total');
     let total = 0;
 
-    carritoItems.innerHTML = ''; // Limpiar el contenido antes de agregar los productos
+    carritoItems.innerHTML = ''; // limpiar el contenido antes de agregar los productos
 
     carrito.forEach(producto => {
         const totalProducto = producto.Precio * producto.cantidad;
@@ -244,7 +243,7 @@ function cargarCarrito() {
     carritoTotal.textContent = `Total: $${total}`;
 }
 
-// Función para eliminar productos del carrito
+//  eliminar productos del carrito
 function eliminarProducto(productoId) {
     let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     carrito = carrito.filter(producto => producto.ID !== productoId);
@@ -252,7 +251,7 @@ function eliminarProducto(productoId) {
     cargarCarrito();
 }
 
-// Función para realizar la compra con SweetAlert y formulario para el comprador
+// sirve para realizar la compra con SweetAlert y formulario para el comprador
 function realizarCompra() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     if (carrito.length === 0) {
@@ -264,7 +263,7 @@ function realizarCompra() {
         return;
     }
 
-    // SweetAlert para solicitar nombre completo y celular
+    // sweetAlert para solicitar nombre completo y celular
     Swal.fire({
         title: 'Finalizar compra',
         html: `
@@ -285,7 +284,7 @@ function realizarCompra() {
         if (result.isConfirmed) {
             const comprador = result.value;
 
-            // Guardar la compra en LocalStorage
+            // guardar la compra en LocalStorage
             const compra = {
                 productos: carrito,
                 comprador: comprador,
@@ -294,9 +293,9 @@ function realizarCompra() {
 
             let compras = JSON.parse(localStorage.getItem('compras')) || [];
             compras.push(compra);
-            localStorage.setItem('compras', JSON.stringify(compras)); // Guardar la compra
+            localStorage.setItem('compras', JSON.stringify(compras)); // gardar la compra
 
-            // Vaciar el carrito
+            // vaciar el carrito
             localStorage.removeItem('carrito');
 
             // SweetAlert de confirmación de compra
@@ -308,7 +307,7 @@ function realizarCompra() {
                 timer: 3000
             });
 
-            // Recargar la página del carrito
+            // recargar la página del carrito
             cargarCarrito();
         }
     });
@@ -326,3 +325,86 @@ window.onload = function() {
     }
 }
 
+
+function enviarDatosWhatsApp(compra) {
+    const numeroTelefono = '5493584371294'; // Tu número de WhatsApp en formato internacional
+    const mensaje = `Hola, me gustaría confirmar mi compra. Nombre: ${compra.comprador.nombre}, Celular: ${compra.comprador.celular}, Total: $${calcularTotal(compra.productos)}. Gracias por su compra.`;
+
+    // Reemplazar espacios y caracteres especiales para la URL
+    const mensajeFormateado = encodeURIComponent(mensaje);
+
+    // Generar el enlace de WhatsApp
+    const enlaceWhatsApp = `https://wa.me/${numeroTelefono}?text=${mensajeFormateado}`;
+
+    // Redirigir al enlace de WhatsApp
+    window.open(enlaceWhatsApp, '_blank');
+}
+
+function calcularTotal(productos) {
+    return productos.reduce((total, producto) => total + (producto.Precio * producto.cantidad), 0);
+}
+
+// función para realizar la compra con SweetAlert y formulario para el comprador
+function realizarCompra() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    if (carrito.length === 0) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Tu carrito está vacío.'
+        });
+        return;
+    }
+
+    // sweetAlert para solicitar nombre completo y celular
+    Swal.fire({
+        title: 'Finalizar compra',
+        html: `
+            <input type="text" id="nombre" class="swal2-input" placeholder="Nombre completo">
+            <input type="tel" id="celular" class="swal2-input" placeholder="Número de celular">
+        `,
+        confirmButtonText: 'Confirmar compra',
+        focusConfirm: false,
+        preConfirm: () => {
+            const nombre = Swal.getPopup().querySelector('#nombre').value;
+            const celular = Swal.getPopup().querySelector('#celular').value;
+            if (!nombre || !celular) {
+                Swal.showValidationMessage('Por favor ingresa tu nombre y número de celular.');
+            }
+            return { nombre: nombre, celular: celular };
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const comprador = result.value;
+
+            // guardar la compra en LocalStorage
+            const compra = {
+                productos: carrito,
+                comprador: comprador,
+                fecha: new Date().toLocaleString()
+            };
+
+            let compras = JSON.parse(localStorage.getItem('compras')) || [];
+            compras.push(compra);
+            localStorage.setItem('compras', JSON.stringify(compras)); // Guardar la compra
+
+            // vaciar el carrito
+            localStorage.removeItem('carrito');
+
+            // enviar los datos de la compra a WhatsApp
+            enviarDatosWhatsApp(compra);
+
+            // sweetAlert de confirmación de compra
+            Swal.fire({
+                icon: 'success',
+                title: 'Compra finalizada',
+                text: 'En breve nos contactaremos con usted.',
+                confirmButtonText: 'OK',
+                timer: 3000
+            });
+
+            // recargar la página del carrito
+            cargarCarrito();
+        }
+    });
+}
